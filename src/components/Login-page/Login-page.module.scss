@@ -1,0 +1,119 @@
+.content {
+  display: flex;
+  justify-content: center;
+  padding: 59px 0px;
+
+  .form {
+    width: 350px;
+    display: inline-flex;
+    height: auto;
+    gap: 21px;
+    padding: 48px 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 6px;
+    border: 1px solid var(--Grey-grey-5, #d9d9d9);
+    background: var(--Grey-grey-1, #fff);
+    box-shadow:
+      0px 0.609px 2.933px 0px rgba(0, 0, 0, 0.02),
+      0px 1.463px 7.049px 0px rgba(0, 0, 0, 0.03),
+      0px 2.755px 13.273px 0px rgba(0, 0, 0, 0.04),
+      0px 4.914px 23.676px 0px rgba(0, 0, 0, 0.04),
+      0px 9.191px 44.284px 0px rgba(0, 0, 0, 0.05),
+      0px 22px 106px 0px rgba(0, 0, 0, 0.07);
+  }
+}
+
+h3 {
+  margin: 0;
+  font-size: 20px;
+  color: var(--Grey-grey-9, #262626);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.label {
+  color: var(--Grey-grey-9, #262626);
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  .errorMessage {
+    margin-top: 0;
+  }
+}
+
+.input {
+  width: 320px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid var(--Grey-grey-5, #d9d9d9);
+  background: var(--Grey-grey-1, #fff);
+  padding: 8px 12px;
+  margin-bottom: 12px;
+}
+
+.container {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonSabmit {
+  width: 319px;
+  padding: 8px 16px;
+  align-items: center;
+  gap: 4px;
+  border-radius: 4px;
+  background: var(--Daybreak-Blue-blue-6, #1890ff);
+  border-color: transparent;
+  color: #fff;
+  margin-top: 12px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttonSabmit:hover {
+  background: var(--Daybreak-Blue-blue-6, #3499f8);
+}
+
+.buttonSabmit:disabled {
+  background: var(--Daybreak-Blue-blue-6, #3675af);
+}
+
+.buttonSabmit:disabled:hover {
+  background: var(--Daybreak-Blue-blue-6, #3675af);
+}
+
+.text {
+  display: inline-block;
+  color: var(--Grey-grey-7, #8c8c8c);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+
+  span {
+    color: var(--Daybreak-Blue-blue-6, #1890ff);
+  }
+}
+
+.errorMessage {
+  margin-top: 0;
+  color: var(--highlight-color, #f5222d);
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.errorInput {
+  border-color: #f5222d;
+}

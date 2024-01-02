@@ -1,0 +1,50 @@
+.link {
+  text-decoration: none;
+}
+
+.h4 {
+  color: var(--info-color, #1890ff);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  margin: 0;
+  cursor: pointer;
+  display: inline-block;
+}
+
+h4:hover {
+  text-decoration: underline;
+  text-decoration-color: #1890ff;
+}
+
+.heart {
+  display: inline-block;
+  width: 16px;
+  height: 20px;
+  background-image: url(../heart.svg);
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+  margin-left: 10px;
+  vertical-align: middle;
+  line-height: 28px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.clicked {
+  background-image: url(../heart_red.svg);
+}
+
+.spanHeart {
+  margin-left: 5px;
+  color: var(--text-color, rgba(0, 0, 0, 0.75));
+  font-family: Inter UI;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  vertical-align: top;
+}

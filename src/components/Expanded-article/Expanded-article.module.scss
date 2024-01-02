@@ -1,0 +1,90 @@
+.content {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0px;
+
+  .article {
+    width: 941px;
+    height: auto;
+    min-height: 100px;
+    background: var(--background-color-base, #fff);
+    padding: 19px;
+    padding-right: 42px;
+    position: relative;
+  }
+
+  .body {
+    width: 682px;
+    color: var(--text-color, rgba(0, 0, 0, 0.75));
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    padding-top: 5px;
+    overflow: hidden;
+  }
+}
+
+.loading,
+.error {
+  margin: 20px 0;
+  margin-bottom: 20px;
+  padding: 30px 50px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.delete {
+  position: absolute;
+  top: 93px;
+  right: 91px;
+  width: 78px;
+  height: 31px;
+  border-radius: 5px;
+  border: 1px solid var(--error-color, #f5222d);
+  padding: 6px 17px;
+  color: var(--error-color, #f5222d);
+  font-family: Inter UI;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  background-color: transparent;
+  vertical-align: middle;
+}
+
+.edit {
+  right: 14px;
+  width: 65px;
+  border: 1px solid var(--success-color, #52c41a);
+  color: var(--success-color, #52c41a);
+}
+
+.heart {
+  display: inline-block;
+  width: 16px;
+  height: 20px;
+  background-image: url(../heart.svg);
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+  margin-left: 10px;
+  vertical-align: middle;
+  line-height: 28px;
+}
+
+.clicked {
+  background-image: url(../heart_red.svg);
+}
+
+.spanHeart {
+  margin-left: 5px;
+  color: var(--text-color, rgba(0, 0, 0, 0.75));
+  font-family: Inter UI;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  vertical-align: top;
+}

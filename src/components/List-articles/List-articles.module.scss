@@ -1,0 +1,16 @@
+.content {
+  height: auto;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  padding: 13px 0;
+}
+
+.loading,
+.error {
+  margin: 20px 0;
+  margin-bottom: 20px;
+  padding: 30px 50px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+}
