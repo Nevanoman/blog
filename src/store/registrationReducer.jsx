@@ -13,6 +13,7 @@ export const fetchToken = createAsyncThunk('registration/fetchToken', async (dat
 
     if (!res.ok) {
       if (res.status === 422) {
+				// eslint-disable-next-line
         alert('Это имя или email уже занято!')
         return 'error'
       }
@@ -20,6 +21,7 @@ export const fetchToken = createAsyncThunk('registration/fetchToken', async (dat
     }
 
     const result = await res.json()
+		// eslint-disable-next-line
     alert('Вы успешно зарегистрированны, войдите в аккаунт!')
     return result
   } catch (error) {
@@ -40,6 +42,7 @@ export const fetchUser = createAsyncThunk('registration/fetchUser', async (data,
 
     if (!res.ok) {
       if (res.status === 422) {
+				// eslint-disable-next-line
         alert('Пользователь не найден!')
         return 'error'
       }
@@ -47,6 +50,7 @@ export const fetchUser = createAsyncThunk('registration/fetchUser', async (data,
     }
 
     const result = await res.json()
+		// eslint-disable-next-line
     alert('Вы успешно вошли в аккаунт!')
     return result
   } catch (error) {
@@ -68,6 +72,7 @@ export const fetchUpdatedUser = createAsyncThunk('registration/fetchUpdatedUser'
 
     if (!res.ok) {
       if (res.status === 422) {
+				// eslint-disable-next-line
         alert('Это имя или email уже занято!')
         return 'error'
       }
@@ -75,6 +80,7 @@ export const fetchUpdatedUser = createAsyncThunk('registration/fetchUpdatedUser'
     }
 
     const result = await res.json()
+		// eslint-disable-next-line
     alert('Данные пользователя успешно обновлены!')
     return result
   } catch (error) {
@@ -93,6 +99,7 @@ const registrationReducer = createSlice({
       state.registration = action.payload
     },
     logOut(state) {
+			// eslint-disable-next-line
       const result = window.confirm('Вы уверены, что хотите покинуть профиль?')
       if (result) {
         state.registration = false

@@ -62,11 +62,13 @@ export const deleteArticle = createAsyncThunk('article/deleteArticle', async (da
     })
 
     if (!res.ok) {
-      alert('Что-то пошло не так, попробуйте снова!')
+			// eslint-disable-next-line
+      alert('Что-то пошло не так, попробуйте снова!') 
+			
       throw new Error(`couldn't create articles ${res.status}`)
     }
-
-    return alert('Вы успешно удалили статью!')
+// eslint-disable-next-line
+    return alert('Вы успешно удалили статью!') 
   } catch (error) {
     return rejectWithValue(error.message)
   }
@@ -123,17 +125,21 @@ const articleReducer = createSlice({
       })
 
       .addCase(createArticle.fulfilled, () => {
-        alert('Вы успешно создали статью!')
+				// eslint-disable-next-line
+        alert('Вы успешно создали статью!') 
       })
       .addCase(createArticle.rejected, (action) => {
-        alert(`Ошибка!, ${action.payload}`)
+				// eslint-disable-next-line
+        alert(`Ошибка!, ${action.payload}`) 
       })
 
       .addCase(updateArticle.fulfilled, () => {
-        alert('Вы успешно отредактировали статью!')
+				// eslint-disable-next-line
+        alert('Вы успешно отредактировали статью!') 
       })
       .addCase(updateArticle.rejected, (action) => {
-        alert(`Ошибка!, ${action.payload}`)
+				// eslint-disable-next-line
+        alert(`Ошибка!, ${action.payload}`) 
       })
   },
 })
