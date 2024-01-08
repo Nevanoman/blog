@@ -2,21 +2,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchArticles = createAsyncThunk('article/fetchArticles', async (obj, { rejectWithValue }) => {
   try {
-    const user = JSON.parse(localStorage.getItem('user'))
     const url = `https://blog.kata.academy/api/articles?limit=5&offset=${obj.page}`
 
-    let res
-
-    if (!user.token) {
-      res = await fetch(url)
-    } else {
-      res = await fetch(url, {
-        method: 'GET',
-        headers: {
-          Authorization: `Token ${user.token}`,
-        },
-      })
-    }
+    const res = await fetch(url)
 
     if (!res.ok) {
       throw new Error(`failed to get list of articles ${res.status}`)

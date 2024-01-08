@@ -6,28 +6,24 @@ import { addFavoritesCount, reduceFavoritesCount } from '../../store/articlesRed
 
 function Favorites({ link, text, favoritesCount, slug, favorited }) {
   const dispatch = useDispatch()
-  const [isClicked, setIsClicked] = useState(false)
-  const [heartClass, setHeartClass] = useState('')
+  const [isClicked, setIsClicked] = useState(favorited)
+  const [heartClass, setHeartClass] = useState(favorited ? `${classes.heart} ${classes.clicked}` : classes.heart)
   const [countfavorites, setCountfavorites] = useState(favoritesCount)
   const registration = localStorage.getItem('registration')
 
-  useEffect(() => {
-    setCountfavorites(favoritesCount)
-    setHeartClass(favorited ? `${classes.heart} ${classes.clicked}` : classes.heart)
-  }, [favorited, favoritesCount])
-
   const handleButtonClick = () => {
     if (registration) {
-      setIsClicked(!isClicked)
       const user = JSON.parse(localStorage.getItem('user'))
       const { token } = user
-      if (isClicked) {
+
+      if (!isClicked) {
         dispatch(
           addFavoritesCount({
             id: slug,
             token,
           })
         )
+        setCountfavorites((prevCount) => prevCount + 1)
       } else {
         dispatch(
           reduceFavoritesCount({
@@ -35,7 +31,13 @@ function Favorites({ link, text, favoritesCount, slug, favorited }) {
             token,
           })
         )
+        setCountfavorites((prevCount) => prevCount - 1)
       }
+
+      setIsClicked((prevIsClicked) => !prevIsClicked)
+      setHeartClass((prevHeartClass) =>
+        prevHeartClass.includes(classes.clicked) ? classes.heart : `${classes.heart} ${classes.clicked}`
+      )
     }
   }
 
