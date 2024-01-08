@@ -1,9 +1,11 @@
-import { Outlet, NavLink, Link } from 'react-router-dom'
+import { Outlet, NavLink, Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import defaultImg from './default-img.png'
 import classes from './Header.module.scss'
 import { changeRegistration, logOut } from '../../store/registrationReducer'
+import { changePage } from '../../store/articlesReducer';
+
 
 // cartenoire
 
@@ -23,6 +25,8 @@ function Header() {
     }
   }, [dispatch, updatedUser])
 
+	const navigate = useNavigate()
+
   if (registration) {
     user = JSON.parse(localStorage.getItem('user'))
 
@@ -30,11 +34,17 @@ function Header() {
       dispatch(logOut())
     }
 
+		function onClickRealworldBlog() {
+      user = JSON.parse(localStorage.getItem('user'));
+      dispatch(changePage(1));
+      navigate('/');
+    }
+
     return (
       <>
         <div className={classes.header}>
           <Link to="articles/">
-            <span>Realworld Blog</span>
+					<span onClick={onClickRealworldBlog} onKeyDown={onClickRealworldBlog} role="button" tabIndex={0}>Realworld Blog</span>
           </Link>
           <div>
             <Link to="new-article">

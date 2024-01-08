@@ -45,6 +45,9 @@ function LoginPage() {
                 pattern: {
                   value: /^[\w.-]+@[\w.-]+\.\w+$/,
                   message: 'email должен быть корректным почтовым адресом!',
+                  validate: {
+                    noSpace: (value) => !/\s/.test(value) || 'Email не должен содержать пробелы!',
+                  },
                 },
               })}
               className={`${classes.input} ${errors.email ? classes.errorInput : ''}`}
@@ -66,6 +69,9 @@ function LoginPage() {
                 maxLength: {
                   value: 40,
                   message: 'Поле должно содержать от 6 до 40 символов (включительно)',
+                },
+                validate: {
+                  noSpace: (value) => !/\s/.test(value) || 'Пароль не должен содержать пробелы!',
                 },
               })}
               className={`${classes.input} ${errors.password ? classes.errorInput : ''}`}

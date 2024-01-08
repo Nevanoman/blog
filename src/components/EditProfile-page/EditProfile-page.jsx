@@ -81,6 +81,9 @@ function EditProfilePage() {
                   value: 20,
                   message: 'Поле должно содержать от 3 до 20 символов (включительно)',
                 },
+                validate: {
+                  noSpace: (value) => !/\s/.test(value) || 'Имя пользователя не должно содержать пробелы!',
+                },
               })}
               className={`${classesLogin.input} ${errors.username ? classesLogin.errorInput : ''}`}
               onChange={handleInputChangeName}
@@ -100,6 +103,9 @@ function EditProfilePage() {
                 pattern: {
                   value: /^[\w.-]+@[\w.-]+\.\w+$/,
                   message: 'email должен быть корректным почтовым адресом!',
+                },
+                validate: {
+                  noSpace: (value) => !/\s/.test(value) || 'email не должен содержать пробелы!',
                 },
               })}
               className={`${classesLogin.input} ${errors.email ? classesLogin.errorInput : ''}`}
@@ -126,6 +132,9 @@ function EditProfilePage() {
                   value: 40,
                   message: 'Поле должно содержать от 6 до 40 символов (включительно)',
                 },
+								validate: {
+									noSpace: value => !/\s/.test(value) || 'Пароль не должен содержать пробелы!',
+								},
               })}
               className={`${classesLogin.input} ${errors.password ? classesLogin.errorInput : ''}`}
             />

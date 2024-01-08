@@ -1,6 +1,6 @@
 import { useForm, useFieldArray } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { createArticle, fetchArticle, updateArticle } from '../../store/articleReducer'
 import classesLogin from '../Login-page/Login-page.module.scss'
@@ -11,8 +11,9 @@ function CreateArticle({ action }) {
   const { id } = useParams()
   const dispatch = useDispatch()
   const user = JSON.parse(localStorage.getItem('user'))
-  const [title, setTitle] = useState(article?.title || 'text')
-  const [description, setDescription] = useState(article?.description || 'text')
+  const [title, setTitle] = useState(article?.title || '')
+  const [description, setDescription] = useState(article?.description || '')
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (action) {
@@ -53,7 +54,7 @@ function CreateArticle({ action }) {
     return result
   }
 
-  const onSubmit = (params) => {
+  const onSubmit = async (params) => {
     const tags = findTags(params.tagList)
 
     if (action) {
@@ -65,7 +66,7 @@ function CreateArticle({ action }) {
           tagList: tags,
         },
       }
-      dispatch(
+      await dispatch(
         updateArticle({
           id,
           token: user.token,
@@ -81,7 +82,7 @@ function CreateArticle({ action }) {
           tagList: tags,
         },
       }
-      dispatch(
+      await dispatch(
         createArticle({
           token: user.token,
           params: newParams,
@@ -89,8 +90,8 @@ function CreateArticle({ action }) {
       )
       reset()
     }
+    navigate('/')
   }
-
   const handleInputChangeTitle = (e) => {
     setTitle(e.target.value)
   }
@@ -102,7 +103,7 @@ function CreateArticle({ action }) {
   return (
     <div className={classesLogin.content}>
       <div className={classes.form}>
-        <h3>Sign In</h3>
+        <h3>Create Article</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label className={classesLogin.label}>
             Title
@@ -111,6 +112,9 @@ function CreateArticle({ action }) {
               placeholder="Title"
               {...register('title', {
                 required: 'Поле обязательно для заполнения!',
+                validate: {
+                  noSpace: (value) => value.trim() !== '' || 'Поле не должно состоять только из пробелов!',
+                },
               })}
               className={`${classes.input} ${errors.title ? classes.errorInput : ''}`}
               onChange={handleInputChangeTitle}
@@ -125,8 +129,12 @@ function CreateArticle({ action }) {
             <input
               value={description}
               placeholder="Title"
+							defaultValue={action && article ? article.body : null}
               {...register('description', {
                 required: 'Поле обязательно для заполнения!',
+                validate: {
+                  noSpace: (value) => value.trim() !== '' || 'Поле не должно состоять только из пробелов!',
+                },
               })}
               className={`${classes.input} ${errors.description ? classes.errorInput : ''}`}
               onChange={handleInputChangeDescription}
@@ -144,6 +152,9 @@ function CreateArticle({ action }) {
               defaultValue={action && article ? article.body : null}
               {...register('body', {
                 required: 'Поле обязательно для заполнения!',
+                validate: {
+                  noSpace: (value) => value.trim() !== '' || 'Поле не должно состоять только из пробелов!',
+                },
               })}
               className={`${classes.input} ${classes.text} ${errors.body ? classes.errorInput : ''}`}
             />
@@ -159,6 +170,9 @@ function CreateArticle({ action }) {
                 className={`${classes.input} ${classes.tags}`}
                 {...register(`tagList.${index}.tag`, {
                   required: 'Поле обязательно для заполнения!',
+                  validate: {
+                    noSpace: (value) => value.trim() !== '' || 'Поле не должно состоять только из пробелов!',
+                  },
                 })}
               />
               <button

@@ -63,6 +63,9 @@ function RegistrationPage() {
                   value: 20,
                   message: 'Поле должно содержать от 3 до 20 символов (включительно)',
                 },
+								validate: {
+									noSpace: value => !/\s/.test(value) || 'Никнейм не должен содержать пробелы!',
+								},
               })}
               className={`${classesLogin.input} ${errors.username ? classesLogin.errorInput : ''}`}
             />
@@ -82,6 +85,9 @@ function RegistrationPage() {
                   value: /^[\w.-]+@[\w.-]+\.\w+$/,
                   message: 'email должен быть корректным почтовым адресом!',
                 },
+								validate: {
+									noSpace: value => !/\s/.test(value) || 'Email не должен содержать пробелы!',
+								},
               })}
               className={`${classesLogin.input} ${errors.email ? classesLogin.errorInput : ''}`}
             />
@@ -106,6 +112,9 @@ function RegistrationPage() {
                   value: 40,
                   message: 'Поле должно содержать от 6 до 40 символов (включительно)',
                 },
+								validate: {
+									noSpace: value => !/\s/.test(value) || 'Пароль не должен содержать пробелы!',
+								},
               })}
               className={`${classesLogin.input} ${errors.password ? classesLogin.errorInput : ''}`}
             />
