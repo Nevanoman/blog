@@ -1,1 +1,1 @@
-https://blog-3xo3z5mth-nevanomans-projects.vercel.app/sign-in
+https://blog-hdc5bcfu3-nevanomans-projects.vercel.app/
