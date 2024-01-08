@@ -37,13 +37,14 @@ function Header() {
 		function onClickRealworldBlog() {
       user = JSON.parse(localStorage.getItem('user'));
       dispatch(changePage(1));
+			localStorage.removeItem('currentPage');
       navigate('/');
     }
 
     return (
       <>
         <div className={classes.header}>
-          <Link to="articles/">
+          <Link to="/">
 					<span onClick={onClickRealworldBlog} onKeyDown={onClickRealworldBlog} role="button" tabIndex={0}>Realworld Blog</span>
           </Link>
           <div>
